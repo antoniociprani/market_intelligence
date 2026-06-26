@@ -1075,7 +1075,7 @@
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>224</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1312,7 +1312,7 @@
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>352</yloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2568,7 +2568,7 @@ var full_name = first_name + ' ' + last_name;
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>16</yloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2754,7 +2754,7 @@ var full_name = first_name + ' ' + last_name;
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>112</yloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
