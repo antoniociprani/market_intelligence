@@ -1,0 +1,2 @@
+datasources/Transfermarkt/game_events.csv filter=lfs diff=lfs merge=lfs -text
+datasources/* filter=lfs diff=lfs merge=lfs -text
