@@ -617,91 +617,69 @@
     <fields>
       <field>
         <name>player_id</name>
-        <rename/>
       </field>
       <field>
         <name>first_name</name>
-        <rename/>
       </field>
       <field>
         <name>full_name</name>
-        <rename/>
       </field>
       <field>
         <name>position</name>
-        <rename/>
       </field>
       <field>
         <name>city_of_birth</name>
-        <rename/>
       </field>
       <field>
         <name>country_of_birth</name>
-        <rename/>
       </field>
       <field>
         <name>date_of_birth</name>
-        <rename/>
       </field>
       <field>
         <name>market_value_in_eur</name>
-        <rename/>
       </field>
       <field>
         <name>median_value</name>
-        <rename/>
       </field>
       <field>
         <name>Rk</name>
-        <rename/>
       </field>
       <field>
         <name>Nation</name>
-        <rename/>
       </field>
       <field>
         <name>Pos</name>
-        <rename/>
       </field>
       <field>
         <name>Squad</name>
-        <rename/>
       </field>
       <field>
         <name>Comp</name>
-        <rename/>
       </field>
       <field>
         <name>Age</name>
-        <rename/>
       </field>
       <field>
         <name>Born</name>
-        <rename/>
       </field>
       <field>
         <name>contract_expiration_date</name>
-        <rename/>
       </field>
       <field>
         <name>MP</name>
-        <rename/>
       </field>
       <field>
         <name>90s</name>
-        <rename/>
       </field>
       <field>
         <name>G+A-PK</name>
-        <rename/>
       </field>
       <field>
         <name>Ast</name>
-        <rename/>
       </field>
       <field>
         <name>Gls</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <remove>
@@ -1226,8 +1204,8 @@
     </GUI>
   </step>
   <step>
-    <name>the moneyball target task</name>
-    <type>FilterRows</type>
+    <name>Table output 2</name>
+    <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1236,37 +1214,81 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Table output</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>market_value_in_eur</leftvalue>
-            <function>&lt;</function>
-            <rightvalue>median_value</rightvalue>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>G+A-PK</leftvalue>
-            <function>&gt;=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Number</type>
-              <text>0.5</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask>####0.0#########;-####0.0#########</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
+    <connection>postgres</connection>
+    <schema>public</schema>
+    <table>high-perform free agents</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>first_name</column_name>
+        <stream_name>first_name</stream_name>
+      </field>
+      <field>
+        <column_name>full_name</column_name>
+        <stream_name>full_name</stream_name>
+      </field>
+      <field>
+        <column_name>position</column_name>
+        <stream_name>position</stream_name>
+      </field>
+      <field>
+        <column_name>country_of_birth</column_name>
+        <stream_name>country_of_birth</stream_name>
+      </field>
+      <field>
+        <column_name>date_of_birth</column_name>
+        <stream_name>date_of_birth</stream_name>
+      </field>
+      <field>
+        <column_name>market_value_in_eur</column_name>
+        <stream_name>market_value_in_eur</stream_name>
+      </field>
+      <field>
+        <column_name>median_value</column_name>
+        <stream_name>median_value</stream_name>
+      </field>
+      <field>
+        <column_name>Nation</column_name>
+        <stream_name>Nation</stream_name>
+      </field>
+      <field>
+        <column_name>Pos</column_name>
+        <stream_name>Pos</stream_name>
+      </field>
+      <field>
+        <column_name>Squad</column_name>
+        <stream_name>Squad</stream_name>
+      </field>
+      <field>
+        <column_name>Born</column_name>
+        <stream_name>Born</stream_name>
+      </field>
+      <field>
+        <column_name>G+A-PK</column_name>
+        <stream_name>G+A-PK</stream_name>
+      </field>
+      <field>
+        <column_name>Ast</column_name>
+        <stream_name>Ast</stream_name>
+      </field>
+      <field>
+        <column_name>Gls</column_name>
+        <stream_name>Gls</stream_name>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1276,8 +1298,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>640</yloc>
+      <xloc>1072</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1360,6 +1382,133 @@ var full_name = first_name + ' ' + last_name;
     <GUI>
       <xloc>336</xloc>
       <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>calculate xA</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>xA</field_name>
+      <calc_type>DIVIDE</calc_type>
+      <field_a>Ast</field_a>
+      <field_b>90s</field_b>
+      <field_c/>
+      <value_type>Number</value_type>
+      <value_length>4</value_length>
+      <value_precision>2</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>high-perform free agents</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to/>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>xA</leftvalue>
+            <function>&gt;=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Number</type>
+              <text>0.3</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask>####0.0#########;-####0.0#########</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <conditions>
+              <condition>
+                <negated>N</negated>
+                <leftvalue>contract_expiration_date</leftvalue>
+                <function>=</function>
+                <rightvalue/>
+                <value>
+                  <name>constant</name>
+                  <type>Date</type>
+                  <text>2026/06/30 00:00:00.000</text>
+                  <length>-1</length>
+                  <precision>-1</precision>
+                  <isnull>N</isnull>
+                  <mask>dd/MM/yyyy</mask>
+                </value>
+              </condition>
+              <condition>
+                <negated>N</negated>
+                <operator>OR</operator>
+                <leftvalue>contract_expiration_date</leftvalue>
+                <function>=</function>
+                <rightvalue/>
+                <value>
+                  <name>constant</name>
+                  <type>Date</type>
+                  <text>2027/06/30 00:00:00.000</text>
+                  <length>-1</length>
+                  <precision>-1</precision>
+                  <isnull>N</isnull>
+                  <mask>dd/MM/yyyy</mask>
+                </value>
+              </condition>
+            </conditions>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>912</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2573,6 +2722,50 @@ var full_name = first_name + ' ' + last_name;
     </GUI>
   </step>
   <step>
+    <name>remove 0 assits</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to/>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Ast</leftvalue>
+        <function>&lt;></function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Number</type>
+          <text>0.0</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask>####0.0#########;-####0.0#########</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>select player and position</name>
     <type>SelectValues</type>
     <description/>
@@ -2586,47 +2779,36 @@ var full_name = first_name + ' ' + last_name;
     <fields>
       <field>
         <name>player_id</name>
-        <rename/>
       </field>
       <field>
         <name>first_name</name>
-        <rename/>
       </field>
       <field>
         <name>last_name</name>
-        <rename/>
       </field>
       <field>
         <name>position</name>
-        <rename/>
       </field>
       <field>
         <name>last_season</name>
-        <rename/>
       </field>
       <field>
         <name>city_of_birth</name>
-        <rename/>
       </field>
       <field>
         <name>country_of_birth</name>
-        <rename/>
       </field>
       <field>
         <name>date_of_birth</name>
-        <rename/>
       </field>
       <field>
         <name>market_value_in_eur</name>
-        <rename/>
       </field>
       <field>
         <name>current_club_domestic_competition_id</name>
-        <rename/>
       </field>
       <field>
         <name>contract_expiration_date</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -2692,55 +2874,42 @@ var full_name = first_name + ' ' + last_name;
     <fields>
       <field>
         <name>Rk</name>
-        <rename/>
       </field>
       <field>
         <name>Player</name>
-        <rename/>
       </field>
       <field>
         <name>Nation</name>
-        <rename/>
       </field>
       <field>
         <name>Pos</name>
-        <rename/>
       </field>
       <field>
         <name>Squad</name>
-        <rename/>
       </field>
       <field>
         <name>Comp</name>
-        <rename/>
       </field>
       <field>
         <name>Age</name>
-        <rename/>
       </field>
       <field>
         <name>Born</name>
-        <rename/>
       </field>
       <field>
         <name>MP</name>
-        <rename/>
       </field>
       <field>
         <name>Gls</name>
-        <rename/>
       </field>
       <field>
         <name>Ast</name>
-        <rename/>
       </field>
       <field>
         <name>G+A-PK</name>
-        <rename/>
       </field>
       <field>
         <name>90s</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2881,6 +3050,62 @@ var full_name = first_name + ' ' + last_name;
     <GUI>
       <xloc>400</xloc>
       <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>the moneyball target task</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Table output</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>market_value_in_eur</leftvalue>
+            <function>&lt;</function>
+            <rightvalue>median_value</rightvalue>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>G+A-PK</leftvalue>
+            <function>&gt;=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Number</type>
+              <text>0.5</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask>####0.0#########;-####0.0#########</mask>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3208,277 +3433,6 @@ var full_name = first_name + ' ' + last_name;
     <GUI>
       <xloc>160</xloc>
       <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>calculate xA</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>xA</field_name>
-      <calc_type>DIVIDE</calc_type>
-      <field_a>Ast</field_a>
-      <field_b>90s</field_b>
-      <field_c/>
-      <value_type>Number</value_type>
-      <value_length>4</value_length>
-      <value_precision>2</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>high-perform free agents</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to/>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>xA</leftvalue>
-            <function>&gt;=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Number</type>
-              <text>0.3</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask>####0.0#########;-####0.0#########</mask>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <leftvalue>contract_expiration_date</leftvalue>
-                <function>=</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>Date</type>
-                  <text>2026/06/30 00:00:00.000</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask>dd/MM/yyyy</mask>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>OR</operator>
-                <leftvalue>contract_expiration_date</leftvalue>
-                <function>=</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>Date</type>
-                  <text>2027/06/30 00:00:00.000</text>
-                  <length>-1</length>
-                  <precision>-1</precision>
-                  <isnull>N</isnull>
-                  <mask>dd/MM/yyyy</mask>
-                </value>
-              </condition>
-            </conditions>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>912</xloc>
-      <yloc>864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>remove 0 assits</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to/>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>Ast</leftvalue>
-        <function>&lt;></function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Number</type>
-          <text>0.0</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask>####0.0#########;-####0.0#########</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>768</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Table output 2</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>postgres</connection>
-    <schema>public</schema>
-    <table>high-perform free agents</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>first_name</column_name>
-        <stream_name>first_name</stream_name>
-      </field>
-      <field>
-        <column_name>full_name</column_name>
-        <stream_name>full_name</stream_name>
-      </field>
-      <field>
-        <column_name>position</column_name>
-        <stream_name>position</stream_name>
-      </field>
-      <field>
-        <column_name>country_of_birth</column_name>
-        <stream_name>country_of_birth</stream_name>
-      </field>
-      <field>
-        <column_name>date_of_birth</column_name>
-        <stream_name>date_of_birth</stream_name>
-      </field>
-      <field>
-        <column_name>market_value_in_eur</column_name>
-        <stream_name>market_value_in_eur</stream_name>
-      </field>
-      <field>
-        <column_name>median_value</column_name>
-        <stream_name>median_value</stream_name>
-      </field>
-      <field>
-        <column_name>Nation</column_name>
-        <stream_name>Nation</stream_name>
-      </field>
-      <field>
-        <column_name>Pos</column_name>
-        <stream_name>Pos</stream_name>
-      </field>
-      <field>
-        <column_name>Squad</column_name>
-        <stream_name>Squad</stream_name>
-      </field>
-      <field>
-        <column_name>Born</column_name>
-        <stream_name>Born</stream_name>
-      </field>
-      <field>
-        <column_name>G+A-PK</column_name>
-        <stream_name>G+A-PK</stream_name>
-      </field>
-      <field>
-        <column_name>Ast</column_name>
-        <stream_name>Ast</stream_name>
-      </field>
-      <field>
-        <column_name>Gls</column_name>
-        <stream_name>Gls</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1072</xloc>
-      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
