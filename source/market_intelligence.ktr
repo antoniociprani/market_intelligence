@@ -578,11 +578,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>the moneyball target task</from>
-      <to>Table output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>calculate xA</from>
       <to>high-perform free agents</to>
       <enabled>Y</enabled>
@@ -598,7 +593,12 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>high-perform free agents</from>
+      <from>Clean data</from>
+      <to>Table output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>calculate xA</from>
       <to>Table output 2</to>
       <enabled>Y</enabled>
     </hop>
@@ -617,69 +617,91 @@
     <fields>
       <field>
         <name>player_id</name>
+        <rename/>
       </field>
       <field>
         <name>first_name</name>
+        <rename/>
       </field>
       <field>
         <name>full_name</name>
+        <rename/>
       </field>
       <field>
         <name>position</name>
+        <rename/>
       </field>
       <field>
         <name>city_of_birth</name>
+        <rename/>
       </field>
       <field>
         <name>country_of_birth</name>
+        <rename/>
       </field>
       <field>
         <name>date_of_birth</name>
+        <rename/>
       </field>
       <field>
         <name>market_value_in_eur</name>
+        <rename/>
       </field>
       <field>
         <name>median_value</name>
+        <rename/>
       </field>
       <field>
         <name>Rk</name>
+        <rename/>
       </field>
       <field>
         <name>Nation</name>
+        <rename/>
       </field>
       <field>
         <name>Pos</name>
+        <rename/>
       </field>
       <field>
         <name>Squad</name>
+        <rename/>
       </field>
       <field>
         <name>Comp</name>
+        <rename/>
       </field>
       <field>
         <name>Age</name>
+        <rename/>
       </field>
       <field>
         <name>Born</name>
+        <rename/>
       </field>
       <field>
         <name>contract_expiration_date</name>
+        <rename/>
       </field>
       <field>
         <name>MP</name>
+        <rename/>
       </field>
       <field>
         <name>90s</name>
+        <rename>full_90s</rename>
       </field>
       <field>
         <name>G+A-PK</name>
+        <rename/>
       </field>
       <field>
         <name>Ast</name>
+        <rename/>
       </field>
       <field>
         <name>Gls</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <remove>
@@ -758,7 +780,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
+      <xloc>768</xloc>
       <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1010,7 +1032,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>624</xloc>
       <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1052,7 +1074,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>624</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1114,7 +1136,7 @@
     <schema>public</schema>
     <table>the_moneyball_target</table>
     <commit>1000</commit>
-    <truncate>N</truncate>
+    <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
     <specify_fields>Y</specify_fields>
@@ -1173,8 +1195,16 @@
         <stream_name>Born</stream_name>
       </field>
       <field>
+        <column_name>contract_expiration_date</column_name>
+        <stream_name>contract_expiration_date</stream_name>
+      </field>
+      <field>
         <column_name>MP</column_name>
         <stream_name>MP</stream_name>
+      </field>
+      <field>
+        <column_name>90s</column_name>
+        <stream_name>90s</stream_name>
       </field>
       <field>
         <column_name>G+A-PK</column_name>
@@ -1198,7 +1228,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
+      <xloc>768</xloc>
       <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1218,7 +1248,7 @@
     <schema>public</schema>
     <table>high-perform free agents</table>
     <commit>1000</commit>
-    <truncate>N</truncate>
+    <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
     <specify_fields>Y</specify_fields>
@@ -1277,6 +1307,18 @@
         <stream_name>Born</stream_name>
       </field>
       <field>
+        <column_name>contract_expiration_date</column_name>
+        <stream_name>contract_expiration_date</stream_name>
+      </field>
+      <field>
+        <column_name>MP</column_name>
+        <stream_name>MP</stream_name>
+      </field>
+      <field>
+        <column_name>full_90s</column_name>
+        <stream_name>full_90s</stream_name>
+      </field>
+      <field>
         <column_name>G+A-PK</column_name>
         <stream_name>G+A-PK</stream_name>
       </field>
@@ -1288,6 +1330,10 @@
         <column_name>Gls</column_name>
         <stream_name>Gls</stream_name>
       </field>
+      <field>
+        <column_name>xA</column_name>
+        <stream_name>xA</stream_name>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1298,7 +1344,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
+      <xloc>592</xloc>
       <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1333,7 +1379,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>624</xloc>
       <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1389,7 +1435,7 @@ var full_name = first_name + ' ' + last_name;
     <name>calculate xA</name>
     <type>Calculator</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -1421,7 +1467,7 @@ var full_name = first_name + ' ' + last_name;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
+      <xloc>768</xloc>
       <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2716,7 +2762,7 @@ var full_name = first_name + ' ' + last_name;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>624</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2760,7 +2806,7 @@ var full_name = first_name + ' ' + last_name;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
+      <xloc>768</xloc>
       <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2922,7 +2968,7 @@ var full_name = first_name + ' ' + last_name;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>624</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3104,7 +3150,7 @@ var full_name = first_name + ' ' + last_name;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
+      <xloc>928</xloc>
       <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
